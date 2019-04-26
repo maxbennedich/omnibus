@@ -3,7 +3,7 @@
 Riding all bus lines in Stockholm in the minimum possible time.
 
 <div align="middle">
-<img src="route-21.png">
+<img src="bus-lines.jpg">
 </div>
 <br/>
 
@@ -30,7 +30,12 @@ bus lines. A route is thus pruned if it visits a stop that has already been visi
 time and with the same or more bus lines used.
 
 For a fixed start point, the solution is found in a couple of minutes on my laptop, and for any
-start point it takes around 38 minutes, and is as follows (also shown in the map above):
+start point it takes around 38 minutes, and is as follows:
+
+<div align="middle">
+<img src="route-21.png">
+</div>
+<br/>
 
 <pre>
 2311.91 s; 42054017 states visited; 45248645 (51.83 %) states pruned; 3588365 states queued
