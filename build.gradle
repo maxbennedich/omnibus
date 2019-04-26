@@ -1,0 +1,26 @@
+apply plugin: 'application'
+mainClassName = "omnibus.Omnibus"
+
+group 'omnibus'
+version '1.0'
+
+sourceCompatibility = 1.11
+
+applicationDefaultJvmArgs = ["-Xms1024m", "-Xmx8192m"]
+
+repositories {
+    mavenCentral()
+    maven {
+        url "http://www.mygrid.org.uk/maven/repository"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    compile("uk.org.mygrid.resources.jcoord:jcoord:1.0")
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.3.0")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.3.0")
+}
