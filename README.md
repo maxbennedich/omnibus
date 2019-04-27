@@ -8,7 +8,9 @@ Riding all bus lines in Stockholm in the minimum possible time.
 <br/>
 
 The challenge was to ride at least one stop on all regularly scheduled city bus lines in Stockholm
-in the minimum possible time. As of October 2018, Stockholm has 28 city bus lines:
+in the minimum possible time. The
+[GTFS data from Trafiklab](https://www.trafiklab.se/api/gtfs-regional-beta)
+was used to extract route and timetable data. As of October 2018, Stockholm has 28 city bus lines:
 
 <pre>
 1, 2, 3, 4, 6         blue commuting buses
@@ -21,16 +23,34 @@ in the minimum possible time. As of October 2018, Stockholm has 28 city bus line
 
 This project is limited to the 21 regularly scheduled bus lines
 (1, 2, 3, 4, 6, 50, 53, 54, 55, 56, 57, 61, 65, 66, 67, 69, 71, 72, 74, 76, 77).
+They stop at a total of 719 unique bus stops, and the route network is shown below,
+with each bus stop indicated with a yellow marker (compare to the official route map
+above).
 
-The program uses the [GTFS data from Trafiklab](https://www.trafiklab.se/api/gtfs-regional-beta),
-and employs a best-first search with pruning to find the fastest route. A walking distance of
-100 meters is allowed between stops when changing buses. What makes the algorithm slightly
+<div align="middle">
+<img src="all-routes.png">
+</div>
+<br/>
+
+The data is turned into a directed graph, with each node corresponding to a specific bus
+line going between two stops at a specific time. Its edges are the set of earliest
+connections to other bus lines (nodes) from the arrival stop. A walking distance of
+100 meters is allowed between stops when changing buses. The resulting graph has
+86,874 nodes and 401,267 edges and looks like this (color coded by bus line):
+
+<div align="middle">
+<img src="graph.jpg">
+</div>
+<br/>
+
+A best-first search with pruning is used to find the fastest route.  What makes the algorithm slightly
 different than using a regular priority queue / Dijkstra is the added condition of using all
-bus lines. A route is thus pruned if it visits a stop that has already been visited at a faster
+bus lines. A route is thus pruned if it visits a node that has already been visited at a faster
 time and with the same or more bus lines used.
 
 For a fixed start point, the solution is found in a couple of minutes on my laptop, and for any
-start point it takes around 38 minutes, and is as follows:
+start point it takes around 38 minutes, and is as follows (yellow marker = change bus, red marker =
+bus stop without changing bus):
 
 <div align="middle">
 <img src="route-21.png">
