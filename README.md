@@ -29,6 +29,10 @@ above).
 
 <div align="middle">
 <img src="all-routes.png">
+<br/>
+<sub><i>
+Map data: Google
+</i></sub>
 </div>
 <br/>
 
@@ -36,7 +40,8 @@ The data is turned into a directed graph, with each node corresponding to a spec
 line going between two stops at a specific time. Its edges are the set of earliest
 connections to other bus lines (nodes) from the arrival stop. A walking distance of
 100 meters is allowed between stops when changing buses. The resulting graph has
-86,874 nodes and 401,267 edges and looks like this (color coded by bus line):
+86,874 nodes and 401,267 edges and apparently looks like this according to
+[Gephi](https://gephi.org/) (color coded by bus line):
 
 <div align="middle">
 <img src="graph.jpg">
@@ -54,6 +59,10 @@ bus stop without changing bus):
 
 <div align="middle">
 <img src="route-21.png">
+<br/>
+<sub><i>
+Map data: Google
+</i></sub>
 </div>
 <br/>
 
